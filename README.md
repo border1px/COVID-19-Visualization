@@ -1,9 +1,9 @@
 <h1 align="center">新冠疫情可视化</h1>
-<div style="display: flex;text-align:center">
+<div style="display: flex;justify-content:center">
 <img src="https://github.com/border1px/COVID-19-Visualization/blob/main/__imgs/img1.png?raw=true" style="width:45%;">
 <img src="https://github.com/border1px/COVID-19-Visualization/blob/main/__imgs/img2.png?raw=true" style="width:45%;">
 </div>
-<div style="display: flex;text-align:center">
+<div style="display: flex;justify-content:center">
 <img src="https://github.com/border1px/COVID-19-Visualization/blob/main/__imgs/img3.png?raw=true" style="width:45%;">
 <img src="https://github.com/border1px/COVID-19-Visualization/blob/main/__imgs/img4.png?raw=true" style="width:45%;">
 </div>
