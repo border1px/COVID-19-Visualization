@@ -1,5 +1,8 @@
 <h1 align="center">新冠疫情可视化</h1>
-![image-20220909165253779](/Users/border1px/Library/Application Support/typora-user-images/image-20220909165253779.png)
+<div style="display: flex;">
+<img src="https://github.com/border1px/COVID-19-Visualization/blob/main/__imgs/img1.png?raw=true" style="width: 50%">
+<img src="https://github.com/border1px/COVID-19-Visualization/blob/main/__imgs/img2.png?raw=true" style="width: 50%">
+</div>
 
 ## 背景
 ​		本项目是针对作者所处的城市（威海）开发的疫情可视化工具，相比头条、百度大厂的疫情地图更加垂直与敏捷。
