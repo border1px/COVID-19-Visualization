@@ -1,7 +1,7 @@
 <h1 align="center">新冠疫情可视化</h1>
 <div style="display: flex;">
-<img src="https://github.com/border1px/COVID-19-Visualization/blob/main/__imgs/img1.png?raw=true" style="flex: 1;">
-<img src="https://github.com/border1px/COVID-19-Visualization/blob/main/__imgs/img2.png?raw=true" style="flex: 1;">
+<img src="https://github.com/border1px/COVID-19-Visualization/blob/main/__imgs/img1.png?raw=true" style="width:45%;">
+<img src="https://github.com/border1px/COVID-19-Visualization/blob/main/__imgs/img2.png?raw=true" style="width:45%;">
 </div>
 
 ## 背景
