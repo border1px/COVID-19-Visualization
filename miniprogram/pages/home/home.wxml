@@ -1,0 +1,188 @@
+<!--pages/homepage.wxml-->
+<wxs module="filter" src="../../utils/filters.wxs"></wxs>
+<!-- 统计面板 -->
+<summary-panel wx:if="{{summary.normal}}" class="summary-panel" summary="{{summary}}"></summary-panel>
+<view wx:else class="summary-panel">
+  <view class="summary-wrapper-header">威海疫情可视化工具</view>
+</view>
+
+<view class='wrap'>
+  <!--当天的活动轨迹-->
+  <cover-image class='backgroundTrailTxt' bindtap='cleanTralTxt' src='../../images/backgroundimage.png' wx:if="{{isTrailTxt}}"></cover-image>
+  <cover-view class='trail-txt-wrapper' bindtap='cleanTralTxt' wx:if="{{isTrailTxt}}">
+    <cover-view class="trail-txt-title">{{ currentDate }}</cover-view>
+    <cover-view class="trail-txt-content">{{ trailTxt }}</cover-view>
+  </cover-view>
+
+  <!-- 版权声明 -->
+  <cover-image class='aboutus' bindtap="bindShowCharts" src='../../images/chart.png'></cover-image>
+
+  <!-- 地图 -->
+  <map
+    id="map"
+    longitude="{{longitude}}"
+    latitude="{{latitude}}"
+    scale="{{scale}}"
+    controls="{{controls}}"
+    bindcontroltap="controltap"
+    bindcallouttap= "callouttap"
+    bindregionchange="bindRegionChange"
+    markers="{{markers}}"
+    circles="{{circles}}"
+    polyline="{{polyline}}"
+    polygon="{{polygon}}"
+    show-location
+    style="width: 100%; height: 100%;"
+  >
+  </map>
+
+  <!-- 背景mask -->
+  <cover-image class='backgroundMask' src='../../images/backgroundimage.png' wx:if="{{isBgMask}}"></cover-image>
+
+  <!-- callout -->
+  <cover-view class='user-wrapper callout-panel' wx:if="{{isCalloutVisible}}">
+    <cover-view class="user-wrapper-header">
+      <cover-view class="user-wrapper-header-inner">
+        <cover-view class="user-wrapper-header-text">{{ calloutPanel.poi_name }}</cover-view>
+        <cover-image src="../../images/close.png" class="user-wrapper-header-close" data-targetKey="isCalloutVisible" bindtap="hideModal"></cover-image>
+      </cover-view>
+      <cover-view class="user-wrapper-header-line"></cover-view>
+    </cover-view>
+    <cover-view class="user-wrapper-content callout-panel-content" >
+      <cover-view class="callout-panel-tags">
+        <cover-view class="callout-panel-tag track-type-1" wx:if="{{calloutPanel.track_type === 1}}">确诊场所</cover-view>
+        <cover-view class="callout-panel-tag track-type-2" wx:if="{{calloutPanel.track_type === 2}}">轨迹点</cover-view>
+        <cover-view class="callout-panel-tag risk-level-3" wx:if="{{calloutPanel.risk_level === 3}}">高风险</cover-view>
+        <cover-view class="callout-panel-tag risk-level-2" wx:if="{{calloutPanel.risk_level === 2}}">中风险</cover-view>
+      </cover-view>
+      <cover-view class="callout-panel-sub">
+        <cover-view class="callout-panel-distance">{{calloutPanel.distance}} km</cover-view>
+        <cover-view class="callout-panel-township">{{calloutPanel.township}}</cover-view>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+
+  <!-- 选择人员 -->
+  <cover-view class='user-wrapper' wx:if="{{isRouteVisible}}">
+    <cover-view class="user-wrapper-header">
+      <cover-view class="user-wrapper-header-inner">
+        <cover-view class="user-wrapper-header-text">患者列表</cover-view>
+        <cover-image src="../../images/close.png" class="user-wrapper-header-close" data-targetKey="isRouteVisible" bindtap="hideModal"></cover-image>
+      </cover-view>
+      <cover-view class="user-wrapper-header-line"></cover-view>
+    </cover-view>
+    <cover-view class="user-wrapper-content" >
+      <cover-view class="user-item" wx:for="{{riskUserList}}" data-index="{{index}}" bindtap='bindChoiceUser' wx:key="index">
+        <cover-view class="user-item-inner">
+          <cover-view class="user-item-l">
+            <cover-view class="user-item-main w150">{{ item.showName }}</cover-view>
+            <cover-view class="tag-type tag-type-1" wx:if="{{ item.type === 1 }}">确诊</cover-view>
+            <cover-view class="tag-type tag-type-2" wx:if="{{ item.type === 2 }}">无症状</cover-view>
+            <cover-view class="tag-type tag-type-3" wx:if="{{ item.type === 3 }}">密接</cover-view>
+          </cover-view>
+          <cover-view class="user-item-r">{{ item.actStartTime }} ~ {{ item.actEndTime }}</cover-view>
+        </cover-view>
+        <cover-view class="user-item-line"></cover-view>
+      </cover-view>
+      <cover-view class="user-wrapper-more">更多患者轨迹正在生成中...</cover-view>
+    </cover-view>
+  </cover-view>
+
+  <!-- 查看风险地区 -->
+  <cover-view class='user-wrapper' wx:if="{{isAreaVisible}}">
+    <cover-view class="user-wrapper-header">
+      <cover-view class="user-wrapper-header-inner">
+        <cover-view class="user-wrapper-header-text">风险地区</cover-view>
+        <cover-image src="../../images/close.png" class="user-wrapper-header-close" data-targetKey="isAreaVisible" bindtap="hideModal"></cover-image>
+      </cover-view>
+      <cover-view class="user-wrapper-header-line"></cover-view>
+    </cover-view>
+    <!-- 高风险 -->
+    <cover-view class="user-wrapper-content" >
+      <cover-view class="tabs">
+        <cover-view wx:for="{{RISKAREAS_MAP}}" class="disabled tabs-h {{ index === riskAreaIndex ? 'activated' : '' }}" data-area_code="{{item.area_code}}" data-index="{{index}}" bindtap="bindChangeAreaTab" wx:key="index">{{item.area_name}}</cover-view>
+      </cover-view>
+
+      <cover-view class="user-item-header" wx:if="{{riskAreasList[riskAreaIndex]['tracks'].length}}">过去14天患者去过的地方</cover-view>
+      <cover-view 
+        class="user-item" 
+        wx:for="{{riskAreasList[riskAreaIndex]['tracks']}}" 
+        data-latitude="{{item.latitude}}"
+        data-longitude="{{item.longitude}}" 
+        bindtap='bindChoiceArea' wx:key="index"
+      >
+        <cover-view class="user-item-inner">
+          <cover-view class="user-item-l">
+            <cover-view class="user-item-main">{{ item.poi_name }}</cover-view>
+          </cover-view>
+          <cover-view class="user-item-m">
+            <cover-view class="track-type track-type-1" wx:if="{{ item.track_type === 1 }}">确诊场所</cover-view>
+          </cover-view>
+          <cover-view class="user-item-r">
+            <cover-view>{{ item.distance }} km</cover-view>
+            <cover-image src="../../images/right-arrow.png" class="right-arrow"></cover-image>
+          </cover-view>
+        </cover-view>
+        <cover-view class="user-item-line"></cover-view>
+      </cover-view>
+      <cover-view class="user-item-more" wx:if="{{riskAreasList[riskAreaIndex]['tracks'].length > 3}}" data-page="trails" bindtap="bindGotoPage">查看更多》</cover-view>
+
+      <cover-view class="user-item-header" wx:if="{{riskAreasList[riskAreaIndex]['risk_areas'].length}}">区县内中高风险地区</cover-view>
+      <cover-view 
+        class="user-item" 
+        wx:for="{{riskAreasList[riskAreaIndex]['risk_areas']}}" 
+        data-latitude="{{item.latitude}}" 
+        data-longitude="{{item.longitude}}" 
+        bindtap='bindChoiceArea' wx:key="index"
+      >
+        <cover-view class="user-item-inner">
+          <cover-view class="user-item-l">
+            <cover-view class="user-item-main">{{ item.poi_name }}</cover-view>
+          </cover-view>
+          <cover-view class="user-item-m">
+            <cover-view class="track-type risk-level-3" wx:if="{{ item.risk_level === 3 }}">高风险</cover-view>
+            <cover-view class="track-type risk-level-2" wx:if="{{ item.risk_level === 2 }}">中风险</cover-view>
+          </cover-view>
+          <cover-view class="user-item-r">
+            <cover-view>{{ item.distance }} km</cover-view>
+            <cover-image src="../../images/right-arrow.png" class="right-arrow"></cover-image>
+          </cover-view>
+        </cover-view>
+        <cover-view class="user-item-line"></cover-view>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+
+  <!-- 定位自己 -->
+  <cover-image class='locationTag' bindtap='bindMylocation' src='../../images/mylocation.png'></cover-image>
+  <cover-image class='reloadTag' bindtap='reload' src='../../images/reload.png'></cover-image>
+
+  <!-- 分享 -->
+  <!-- <cover-view class='shareTag'>
+    <cover-image class='shareTagImg' bindtap='bindShare' src='../../images/share.png'></cover-image>
+    <button open-type='share'>分享</button>
+  </cover-view> -->
+
+  <!-- 底部工具栏 -->
+  <view class="top">
+    <view class="top-box {{addListShow?'search-box1':''}}">
+      <!-- <view class="top-box-l" bindtap='bindShowRouteModal'> -->
+      <view class="top-box-l" data-page="news" bindtap="bindGotoPage">
+        <view class="btn-select">
+          <!-- <image wx:if="currentUser" src="../../images/cancel_user.png" class="btn-select-img"></image> -->
+          <image src="../../images/notice.png" class="btn-select-img"></image>
+        </view>
+        <view class="show-name activated">{{ summary.normal ? '新闻中心' : '关于我们' }}</view>
+      </view>
+      <view class="top-box-about" data-page="aboutUs" bindtap="bindGotoPage">
+        <image src="../../images/about.png" class="btn-about"></image>
+      </view>
+      <view class="top-box-r" bindtap='bindShowRiskAreaModal'>
+        <view class="top-box-r-l" wx:if="currentUser" >
+          <view class="risk-level-1">风险区域</view>
+        </view> 
+        <image class='notepadTag'  src='../../images/location.png'></image>
+      </view>
+    </view>
+  </view>
+</view>

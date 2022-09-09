@@ -1,0 +1,12 @@
+module.exports = {
+  // 格式化时间为：YYYY-MM-DD
+  dateFormat: function(dateStr) {
+    if (!dateStr) return 'YYYY-MM-DD'
+    var t = getDate(dateStr);
+    var r = []
+    r.push(t.getFullYear())
+    r.push(('0' + (t.getMonth() + 1)).slice(-2))
+    r.push(('0' + (t.getDate())).slice(-2))
+    return r.join('-');
+  }
+}

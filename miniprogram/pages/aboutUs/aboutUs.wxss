@@ -1,0 +1,48 @@
+/* pages/aboutUs/aboutUs.wxss */
+
+.about-us{
+  padding: 50rpx;
+}
+.section{
+  margin-bottom: 50rpx;
+}
+.section-title{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.stress{
+  color: #ed5d3c;
+  background-color: #fdf5f5;
+}
+.mr-20{
+  margin-right: 20rpx;
+}
+.w200{
+  width: 200rpx;
+}
+
+.section-item{
+  display: flex;
+  margin-bottom: 30rpx;
+  align-items: flex-start 
+}
+.section-item:last-child{
+  margin-bottom: 0!important;
+}
+.section-item-icon{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 40rpx;
+}
+.section-item-text{
+  flex:1;
+}
+
+.version{
+  width: 100%;
+  text-align: center;
+  margin: 100rpx 0 50rpx 0;
+  color: #A9A9A9;
+  font-size: 14px;
+}

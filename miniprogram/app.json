@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/news/news",
+    "pages/newsDetail/newsDetail",
+    "pages/index/index",
+    "pages/userConsole/userConsole",
+    "pages/aboutUs/aboutUs",
+    "pages/charts/charts",
+    "pages/trails/trails",
+    "components/summary-panel/summary-panel",
+    "components/summary-panel-default/summary-panel-default"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "鲁K风情",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "统计您周边的疫情需获取位置信息，请授权"
+    }
+  }
+}

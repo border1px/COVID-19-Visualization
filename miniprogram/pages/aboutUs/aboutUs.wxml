@@ -1,0 +1,113 @@
+
+<view class="about-us">
+
+  <view class="section">
+    <view class="section-title">数据来源</view>
+    <view class="section-content">
+      来自威海市卫健委官方渠道公开的数据。跟随卫健委的更新频率，官方通知更新后1小时内更新数据。
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">解决了什么问题？</view>
+    <view class="section-content">
+      本程序<text class="stress">只针对威海地区</text>，将市卫健委官方公布的数据进行可视化，便于使用者直观的了解疫情趋势。正因为足够垂直，相比字节、腾讯、百度等全国范围的疫情地图，可以做到更加精细化，更多功能 <text class="stress">持续迭代中。。。</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">名称解释</view>
+    <view class="section-content">
+      <view class="section-item">
+        <text class="stress mr-20 w200">本土昨日新增</text>
+        <view class="section-item-text">昨日新增确诊数，以昨日的 0时至24时 为一个统计周期</view>
+      </view>
+      <view class="section-item">
+        <text class="stress mr-20 w200">现有确诊</text>
+        <view class="section-item-text">自 2022.03.07 开始，统计由威海市卫健委发布的确诊患者数据</view>
+      </view>
+      <view class="section-item">
+        <text class="stress mr-20 w200">现有无症状</text>
+        <view class="section-item-text">自 2022.03.07 开始，统计由威海市卫健委发布的无症状患者数据</view>
+      </view>
+      <view class="section-item">
+        <text class="stress mr-20 w200">累计确诊</text>
+        <view class="section-item-text">统计威海至今所有新冠确诊患者的数据</view>
+      </view>
+      <view class="section-item">
+        <view style="width: 220rpx;">
+          <image src="../../images/risk-range.png" class="section-item-icon"></image>
+        </view>
+        <view class="section-item-text">周边1km、3km范围</view>
+      </view>
+      <view class="section-item">
+        <view style="width: 220rpx;">
+          <image src="../../images/loc-virus.png" class="section-item-icon"></image>
+        </view>
+        <view class="section-item-text">政府公布的中高风险地区、确诊患者去过的场所(未包含无症状患者住所)</view>
+      </view>
+      <!--
+      <view class="section-item">
+        <view style="width: 220rpx;">
+          <image src="../../images/loc-trail.png" class="section-item-icon"></image>
+        </view>
+        <view class="section-item-text">轨迹点,过去14天患者去过的场所</view>
+      </view> -->
+    </view>
+  </view>
+
+  <view class="section">
+  <view class="section-title">功能说明</view>
+  <view class="section-content">
+    <view class="section-item">
+      <image src="../../images/about.png" class="section-item-icon"></image>
+      <view class="section-item-text">使用说明</view>
+    </view>
+    <view class="section-item">
+      <image src="../../images/chart.png" class="section-item-icon"></image>
+      <view class="section-item-text">疫情图表分析</view>
+    </view>
+    <view class="section-item">
+      <image src="../../images/more.png" class="section-item-icon"></image>
+      <view class="section-item-text">将小程序分享给您的亲朋好友</view>
+    </view>
+    <view class="section-item">
+      <image src="../../images/reload.png" class="section-item-icon" style="width: 60rpx;height: 60rpx;"></image>
+      <view class="section-item-text" style="position: relative;left:-10rpx;">初始化小程序</view>
+    </view>
+    <view class="section-item">
+      <image src="../../images/mylocation.png" class="section-item-icon" style="width: 60rpx;height: 60rpx;"></image>
+      <view class="section-item-text" style="position: relative;left:-10rpx;">定位到我所在位置</view>
+    </view>
+    <view class="section-item">
+      <image src="../../images/notice.png" class="section-item-icon"></image>
+      <view class="section-item-text">查看卫健委发布的疫情新闻</view>
+    </view>
+    <view class="section-item">
+      <image src="../../images/location.png" class="section-item-icon"></image>
+      <view class="section-item-text">查看高、中风险区域</view>
+    </view>
+  </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">与我联系</view>
+    <view class="section-content">
+    <view>我们努力提供权威、准确、及时的疫情数据，如有任何疑问，欢迎通过下列方式联系我。</view>
+    <view style="margin-top: 15rpx;"><text class="stress">发邮件：</text>border1px@163.com</view>
+    <view><text class="stress">公众号：</text>秋日可爱</view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">感谢</view>
+    <view class="section-content">
+      奋斗在抗疫一线的医护人员、执勤民警、工作人员以及志愿者，你们辛苦了！
+    </view>
+  </view>
+
+  <view class="version">
+    <text>版本：</text>
+    <text>1.4.2</text>
+  </view>
+</view>

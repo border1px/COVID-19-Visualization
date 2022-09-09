@@ -1,0 +1,42 @@
+<!-- 统计面板 -->
+<summary-panel class="section" summary="{{summary}}" router="{{false}}"></summary-panel>
+
+<view class="">
+  <canvas canvas-id="lineCanvas" disable-scroll="true" class="lineCanvas section"></canvas>
+  <view class="table section">
+    <view class="tr bg-w">
+      <view class="th">日  期</view>
+      <view class="th">新增确诊</view>
+      <view class="th ">新增无症状</view>
+    </view>
+    <block wx:for="{{summary.all}}" wx:key="index">
+      <view class="tr bg-g {{ item.history ? 'history' : '' }}" wx:if="{{index % 2 == 0}}">
+        <view wx:if="{{item.history}}" class="td" data-remark="{{item.remark}}" bindtap="bindShowRemark">
+          历史数据<image wx:if="{{item.remark}}" src="../../images/what.png" class="tag-what"></image>
+        </view>
+        <view wx:else class="td first-column " data-confirm2="{{item.confirm2}}" data-remark="{{item.remark}}" bindtap="bindShowRemark">
+          <view class="first-column-inner">
+            {{item.date}}<image wx:if="{{item.remark || item.confirm2}}" src="../../images/what.png" class="tag-what"></image>
+          </view>
+        </view>
+
+        <view class="td">{{item.confirm}}</view>
+        <view class="td">{{item.symptomless}}</view>
+      </view>
+      <view class="tr {{ item.history ? 'history' : '' }}" wx:else>
+        <view class="td first-column" data-confirm2="{{item.confirm2}}" data-remark="{{item.remark}}" bindtap="bindShowRemark">
+          <view class="first-column-inner">
+            {{item.date}}<image wx:if="{{item.remark || item.confirm2}}" src="../../images/what.png" class="tag-what"></image>
+          </view>
+        </view>
+        <view class="td">{{item.confirm}}</view>
+        <view class="td">{{item.symptomless}}</view>
+      </view>
+    </block>
+  </view>
+
+  <view class="tip-wrapper">
+    <text class="tip-label">tips：</text>  
+    <text class="tip-value">自2022.03.07日至今共有 <text class="stress">{{summary.total.confirm2}}</text> 位无症状患者转为确诊。</text> 
+  </view>
+</view>

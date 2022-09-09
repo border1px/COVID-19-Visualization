@@ -1,0 +1,6 @@
+/* pages/newsDetail/newsDetail.wxss */
+.publish-time{
+  font-size: 14px;
+  color: #A9A9A9;
+  margin-bottom: 40rpx;
+}

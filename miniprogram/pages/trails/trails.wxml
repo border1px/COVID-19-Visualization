@@ -1,0 +1,41 @@
+<view class="container">
+  <cover-image class='reloadTag' bindtap='reset' src='../../images/reload.png'></cover-image>
+
+  <map
+    id="map"
+    longitude="{{longitude}}"
+    latitude="{{latitude}}"
+    scale="{{scale}}"
+    markers="{{markers}}"
+    circles="{{circles}}"
+    bindregionchange="bindRegionChange"
+    show-location>
+  </map>
+  <view class="tips">
+  轨迹点：{{ markers.length }}
+  </view>
+  <scroll-view class="scroll-view" scroll-y="true" bindscroll="scroll" style="width: 100%" style="height: {{scrollViewHeight}}rpx;">
+    <view 
+      class="list-item"
+      wx:for="{{markers}}" data-index="{{index}}" 
+      data-latitude="{{item.latitude}}" 
+      data-longitude="{{item.longitude}}"
+      bindtap='bindChoiceArea' wx:key="index"
+    >
+      <view class="list-item-inner">
+        <view class="list-item-l">
+          <view class="list-item-main">{{ item.poi_name }}</view>
+          <view class="list-item-sub">
+            <view class="list-item-sub-l">{{item.distance}} km</view>
+            <view class="list-item-sub-r">{{item.township}}</view>
+          </view>
+        </view>
+        <view class="list-item-r">
+          <!-- <cover-image wx:if="{{item.track_type === 1}}" class="list-item-icon" src="../../images/loc-virus.png"></cover-image> -->
+          <!-- <cover-image wx:if="{{item.track_type === 2}}" class="list-item-icon" src="../../images/loc-trail.png"></cover-image> -->
+        </view>
+      </view>
+      <view class="list-item-line"></view>
+    </view> 
+  </scroll-view>
+</view>

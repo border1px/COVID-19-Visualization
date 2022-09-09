@@ -1,0 +1,13 @@
+<page-meta root-font-size="system"/>
+<view class="page" data-weui-theme="{{theme}}" data-weui-mode="{{mode}}">
+  <view class="weui-article">
+    <view aria-role="heading" aria-level="4" class="weui-article__h1">{{ article.title }}</view>
+    <view class="publish-time" wx:if="{{article.publishTime}}">发布时间：{{article.publishTime}}</view>
+    <view class="publish-time" wx:if="{{article.publishTime}}">新闻来源：{{article.url}}</view>
+    <view class="weui-article__section">
+      <view class="weui-article__p">
+        <rich-text nodes="{{ article.content }}"></rich-text>
+      </view>
+    </view>
+  </view>
+</view>

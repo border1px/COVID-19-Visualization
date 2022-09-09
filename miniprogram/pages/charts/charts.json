@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "summary-panel": "../../components/summary-panel/summary-panel"
+  },
+  "navigationBarTitleText": "疫情信息"
+}

@@ -1,0 +1,22 @@
+
+.summary-wrapper{
+  width: 700rpx;
+  z-index: 9;
+  margin: 0 auto;
+}
+.summary-wrapper-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.summary-wrapper-header .main {
+  font-weight: bold;
+}
+.summary-wrapper-header .time {
+  color: #A9A9A9;
+  font-size: 10px;
+  padding-right: 100rpx;
+}

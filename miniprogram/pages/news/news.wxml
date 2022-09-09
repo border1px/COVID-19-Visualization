@@ -1,0 +1,27 @@
+<view class="">
+  <view class="tabs">
+    <view wx:for="{{types}}" class="disabled tabs-h {{ item.value === currType ? 'activated' : '' }}" data-type="{{item.value}}" bindtap="bindChangeType" wx:key="index">{{item.label}}</view>
+  </view>
+</view>
+
+<scroll-view 
+  scroll-y 
+  bindscrolltolower="loadMore" 
+  style="height: {{ clientHeight ? clientHeight + 'px' : 'auto'}}"
+>
+  <view class="weui-cells weui-cells_after-title">
+    <navigator 
+      wx:for="{{list}}" 
+      wx:key="index" 
+      aria-labelledby="js_cell_l1_bd" 
+      url="/pages/newsDetail/newsDetail?id={{item._id}}"
+      class="weui-cell weui-cell_access" 
+      hover-class="weui-cell_active">
+        <view class="weui-cell__bd" id="js_cell_l1_bd" aria-hidden="true">
+          <view>{{item.title}}</view>
+          <view class="weui-cell__desc">{{item.publishTime}}</view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access" aria-hidden="true"></view>
+    </navigator>
+  </view>
+</scroll-view>

@@ -1,0 +1,107 @@
+/* 统计面板 */
+.no-publish{
+  font-size: 12px;
+  padding: 30rpx;
+}
+.summary-wrapper{
+  width: 700rpx;
+  z-index: 9;
+  margin: 0 auto;
+}
+.summary-wrapper-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+.summary-wrapper-header .main {
+  font-weight: bold;
+}
+.summary-wrapper-header .time {
+  color: #A9A9A9;
+  font-size: 10px;
+  padding-right: 100rpx;
+}
+.summary{
+  display: flex;
+}
+.summary-more{
+  width: 40rpx!important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.summary .number {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 8px 5px 5px 5px;
+}
+.summary .small-number {
+  font-size: 12px;
+}
+.summary .tag {
+  height: 35px;
+  line-height: 35px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.summary .tip{
+  font-size: 12px;
+  padding-top: 10px;
+  color: #8B8989;
+}
+.summary .confirm {
+  background-color: #F1F8F4;
+  border-radius: 8px 0 0 8px;
+  margin-right: 2px;
+}
+.summary .confirm .tag{
+  background-color: #DFEEE6;
+}
+.summary .confirm .number,.small-number{
+  color: #178B50;
+}
+
+.summary .suspect{
+  background-color: #FDF1F1;
+  margin-right: 2px;
+}
+.summary  .suspect .tag{
+  background-color: #FFE0E0;
+}
+.summary  .suspect  .number,.small-number{
+  color: #D81D1B;
+}
+
+.summary .heal{
+  background-color: #FFF7ED;
+  margin-right: 2px;
+}
+.summary .heal .tag{
+  background-color: #FFEED9;
+}
+.summary .heal .number,.small-number{
+  color: #F7AB1A;
+}
+.summary .all {
+  background-color: #F8F8F8;
+  border-radius: 0 8px 8px 0;
+}
+.summary .all .tag{
+  background-color: #EEEEEE;
+}
+.summary .all .number,.small-number{
+  color: #66666C;
+}
+.summary .flex-1 {
+  flex: 1;
+  text-align: center;
+  overflow: hidden;
+}
+.tag-what{
+  width: 30rpx;
+  height: 30rpx;
+  /* margin-left: 10rpx; */
+  vertical-align: middle;
+}
+/* 统计面板 */

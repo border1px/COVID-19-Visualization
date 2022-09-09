@@ -1,0 +1,6 @@
+<view class="summary-wrapper" >
+  <view class="summary-wrapper-header">
+    <view class="main">威海疫情</view>
+    <view class="time">截止 {{summary.lastUpdateTime}}</view>
+  </view>
+</view>

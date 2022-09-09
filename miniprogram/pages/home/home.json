@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "summary-panel": "../../components/summary-panel/summary-panel",
+    "summary-panel-default": "../../components/summary-panel-default/summary-panel-default"
+  }
+}

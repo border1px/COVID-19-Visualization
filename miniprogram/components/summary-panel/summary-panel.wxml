@@ -1,0 +1,48 @@
+<view class="summary-wrapper" name="summary">
+  <view class="summary-wrapper-header">
+    <view class="main">威海疫情</view>
+    <view class="time">截止 {{summary.lastUpdateTime}}</view>
+  </view>
+  <view class="summary">
+    <view class="confirm flex-1">
+      <view data-page="charts" bindtap="bindGotoPage">
+        <view class="tip"><text class="small-number">\n</text></view>
+        <view wx:if="{{summary.today.valid}}" class="number">{{summary.today.confirm}}</view>
+        <view wx:else class="no-publish" >未公布</view>
+      </view>
+      <view class="tag"><text>本土昨日新增</text></view>
+    </view>
+    <view class="suspect flex-1">
+      <view data-page="charts" bindtap="bindGotoPage">
+        <view wx:if="{{summary.today.valid}}" class="tip">较昨日<text class="small-number">+{{summary.today.confirm}}</text></view>
+        <view wx:else class="tip">较昨日<text class="small-number">未公布</text></view>
+        <view wx:if="{{summary.today.valid}}" class="number">{{summary.today.storeConfirm}}</view>
+        <view wx:else class="no-publish" >加载中</view>
+      </view>
+      <view class="tag" bindtap="bindWhyConfirm">
+        <text>现有确诊</text>
+        <image src="../../images/what.png" class="tag-what"></image>
+      </view>
+    </view>
+    <view class="heal flex-1">
+      <view data-page="charts" bindtap="bindGotoPage">
+        <view wx:if="{{summary.today.valid}}" class="tip">较昨日<text class="small-number">+{{summary.today.symptomless}}</text></view>
+        <view wx:else class="tip" >较昨日<text class="small-number">未公布</text></view>
+        <view wx:if="{{summary.today.valid}}" class="number">{{summary.total.symptomless}}</view>
+        <view wx:else class="no-publish" >加载中</view>
+      </view>
+      <view class="tag">
+        <text>现有无症状</text>
+      </view>
+    </view>
+    <view class="all flex-1">
+      <view data-page="charts" bindtap="bindGotoPage">
+        <view wx:if="{{summary.today.valid}}" class="tip">较昨日<text class="small-number">+{{summary.today.confirm}}</text></view>
+        <view wx:else class="tip" >较昨日<text class="small-number">未公布</text></view>
+        <view wx:if="{{summary.today.valid}}" class="number">{{summary.total.confirm}}</view>
+        <view wx:else class="no-publish" >加载中</view>
+      </view>
+      <view class="tag"><text>累计确诊</text></view>
+    </view>
+  </view>
+</view>
